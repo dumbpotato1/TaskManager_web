@@ -19,4 +19,9 @@
     <ProjectReference Include="..\TaskManager.Core\TaskManager.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Prepositories\" />
+    <Folder Include="Persistance\" />
+  </ItemGroup>
+
 </Project>
