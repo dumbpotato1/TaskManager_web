@@ -1,12 +1,20 @@
+using TaskManager.Infrastructure.Prepositories;
 using TaskManager_web.Components;
+using TaskManager.Infrastructure.Persistance;
+using TaskManager.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+var conn=builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddRazorPages();   
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(conn, new MySqlServerVersion(new Version(6,3,7))));    
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddRazorPages();    
 builder.Services.AddServerSideBlazor(); 
 
 var app = builder.Build();

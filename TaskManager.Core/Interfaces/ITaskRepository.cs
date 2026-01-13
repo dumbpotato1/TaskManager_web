@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TaskManager.Core.Entities;
 
 namespace TaskManager.Core.Interfaces
 {
-    internal class ITaskRepository1
+    public interface ITaskRepository
     {
+        IEnumerable<TaskItem> GetAll();
+        TaskItem GetById(int id);
+        void Add(TaskItem task);
+        void Update(TaskItem task);
+        void Delete(TaskItem task);
+        void Save(TaskItem task);
     }
 }
